@@ -295,6 +295,8 @@ class TikTokBaseIE(InfoExtractor):
             'subtitles': self.extract_subtitles(aweme_detail, aweme_id),
             'thumbnails': thumbnails,
             'duration': int_or_none(traverse_obj(video_info, 'duration', ('download_addr', 'duration')), scale=1000),
+            'bodydance_score': int_or_none(aweme_detail.get('bodydance_score')),
+            'interaction_stickers': aweme_detail.get('interaction_stickers'),
             'availability': self._availability(
                 is_private='Private' in labels,
                 needs_subscription='Friends only' in labels,
